@@ -1,7 +1,7 @@
 import React from "react";
 
 const Header: React.FC = () => (
-  <nav className="bg-white border-gray-200">
+  <nav className="bg-white border-gray-200 sticky top-0 z-50 h-16">
     <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
       <div className="flex items-center">
         <h1 className="text-2xl font-bold">Coffee Shop</h1>
