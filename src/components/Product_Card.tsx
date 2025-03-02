@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaInfoCircle } from "react-icons/fa";
 import ProductModal from "./ProductModal";
 
 interface ProductCardProps {
@@ -18,6 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const [selectedSize, setSelectedSize] = useState("M");
   const [selectedSugar, setSelectedSugar] = useState("50%");
   const [selectedIce, setSelectedIce] = useState("50%");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSelection = (
     setState: (value: string) => void,
@@ -26,8 +28,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
     setState(value);
   };
 
+  const handleViewDetails = () => {
+    setIsModalOpen(true);
+  };
+
   return (
-    <div className="w-full max-w-md bg-white shadow-xl rounded-lg p-5 ">
+    <div className="w-full max-w-md bg-white shadow-xl rounded-lg p-5">
       <div className="flex">
         <img
           className="w-1/2 h-auto object-cover rounded-lg"
@@ -104,9 +110,27 @@ const ProductCard: React.FC<ProductCardProps> = ({
         ))}
       </div>
 
-      <button className="mt-5 w-full py-2 bg-brown-600 text-black rounded-lg font-semibold hover:text-red-500">
-        Add to Billing
-      </button>
+      <div className="mt-5 flex justify-between">
+        <button className="w-full py-2 bg-brown-600 text-black rounded-lg font-semibold hover:text-red-500">
+          Add to Billing
+        </button>
+        <button
+          onClick={handleViewDetails}
+          className="ml-2 flex items-center justify-center w-10 h-10 bg-blue-500 text-white rounded-full hover:bg-blue-600"
+        >
+          <FaInfoCircle />
+        </button>
+      </div>
+
+      {isModalOpen && (
+        <ProductModal
+          name={name}
+          price={price}
+          description={description}
+          image={image}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </div>
   );
 };
