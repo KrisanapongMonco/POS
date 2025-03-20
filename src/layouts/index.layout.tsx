@@ -60,14 +60,6 @@ function useDemoRouter(initialPath: string): Router {
   return router;
 }
 
-// Skeleton loader for content (just for UI purposes)
-const Skeleton = styled("div")<{ height: number }>(({ theme, height }) => ({
-  backgroundColor: theme.palette.action.hover,
-  borderRadius: theme.shape.borderRadius,
-  height,
-  content: '" "',
-}));
-
 // Main DashboardLayoutBasic component
 export default function DashboardLayoutBasic(props: any) {
   const { window } = props;
@@ -87,16 +79,8 @@ export default function DashboardLayoutBasic(props: any) {
       <DashboardLayout>
         <PageContainer>
           <Grid container spacing={1}>
-            {/* Conditionally render Dashboard or Orders based on router pathname */}
             {router.pathname === "/app/dashboard" && <Dashboard />}
             {router.pathname === "/app/order" && <Order />}
-
-            {/* If you want to add additional static content or a skeleton loader */}
-            {router.pathname === "/" && (
-              <Grid item xs={12}>
-                <Skeleton height={200} />
-              </Grid>
-            )}
           </Grid>
         </PageContainer>
         <Footer />
