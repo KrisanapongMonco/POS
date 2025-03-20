@@ -20,13 +20,13 @@ const NAVIGATION: Navigation = [
     segment: "dashboard",
     title: "Dashboard",
     icon: <DashboardIcon />,
-    link: "/dashboard", // Added link to route
+    link: "/app/dashboard",
   },
   {
     segment: "orders",
     title: "Orders",
     icon: <ShoppingCartIcon />,
-    link: "/orders", // Added link to route
+    link: "/app/order",
   },
 ];
 
@@ -72,7 +72,7 @@ const Skeleton = styled("div")<{ height: number }>(({ theme, height }) => ({
 export default function DashboardLayoutBasic(props: any) {
   const { window } = props;
 
-  const router = useDemoRouter("/dashboard");
+  const router = useDemoRouter("/app/dashboard");
 
   // Remove this const when copying and pasting into your project.
   const demoWindow = window ? window() : undefined;
@@ -88,8 +88,8 @@ export default function DashboardLayoutBasic(props: any) {
         <PageContainer>
           <Grid container spacing={1}>
             {/* Conditionally render Dashboard or Orders based on router pathname */}
-            {router.pathname === "/dashboard" && <Dashboard />}
-            {router.pathname === "/orders" && <Order />}
+            {router.pathname === "/app/dashboard" && <Dashboard />}
+            {router.pathname === "/app/order" && <Order />}
 
             {/* If you want to add additional static content or a skeleton loader */}
             {router.pathname === "/" && (
