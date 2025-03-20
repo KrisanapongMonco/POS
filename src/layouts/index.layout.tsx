@@ -17,13 +17,13 @@ const NAVIGATION: Navigation = [
     title: "Main items",
   },
   {
-    // segment: "dashboard",
+    segment: "dashboard",
     title: "Dashboard",
     icon: <DashboardIcon />,
     link: "/dashboard", // Added link to route
   },
   {
-    // segment: "orders",
+    segment: "orders",
     title: "Orders",
     icon: <ShoppingCartIcon />,
     link: "/orders", // Added link to route
